@@ -1,14 +1,14 @@
-# Chapter 2 Overview of Go languange
+# 챕터 2. GO 언어 살펴보기
 
-I don't feel like writing a chapter introducing Go right now, as there are other materials already available. There are several tutorials on the Go web site:
+지금 Go 를 소개하는 챕터를 쓰고 싶지는 않습니다. 왜냐하면 이미 그에 대한 자료들이 많이 있기 때문입니다. Go 웹사이트에서도 여러 튜토리얼들이 있지요.
 
-* [Getting started](http://golang.org/doc/install.html)
-* [A Tutorial for the Go Programming Language](http://golang.org/doc/go_tutorial.html)
-* [Effective Go](http://golang.org/doc/effective_go.html)
+* [Go 시작하기](http://golang.org/doc/install.html)
+* [Go 프로그래밍 언어 튜토리얼](http://golang.org/doc/go_tutorial.html)
+* [효과적인 Go](https://www.gitbook.com/book/gosudaweb/effective-go-in-korean/details)
 
-There is an introductory textbook on Go: "Go Programming" by John P. Baugh available from [Amazon][1]
+John P. Baugh 가 쓴 Go의 교과서, "Go Programming" 를 [Amazon][1] 에서 구매하실 수 있습니다.
 
-There is a [#golang][2] group on Google+ 
+Google+ 그룹에서 있는 [#golang] 도 참조할 수 있습니다.
 
 
 
