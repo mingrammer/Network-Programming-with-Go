@@ -1,17 +1,15 @@
-## Server Distribution
+## 서버 분배
 
-A client-server systems need not be simple. The basic model is single client, single server 
+클라이언트-서버 시스템이 항상 단순하진 않습니다. 가장 기본적인 모델은 단일 클라이언트와 단일 서버로 이루어진 형태입니다.
 
 ![one-one](../assets/one-one.gif)
 
-but you can also have multiple clients, single server 
+뿐만 아니라 하나의 서버가 여러 개의 클라이언트를 가질 수도 있습니다.
 
 ![many-one](../assets/many-one.gif)
 
-In this, the master receives requests and instead of handling them one at a time itself, passes them off to other servers to handle. This is a common model when concurrent clients are possible.
+여기서 마스터는 클라이언트의 요청을 직접 처리하는 대신 해당 요청을 슬레이브 서버에 전달하여 처리하게 됩니다. 이는 클라이언트들이 동시성을 가질 수 있는 경우에서의 일반적인 모델입니다.
 
-There are also single client, multiple servers 
+또한, 하나의 클라이언트가 여러 개의 서버를 가질 수도 있습니다.
 
 ![one-many](../assets/one-many.gif)
-
-which occurs frequently when a server needs to act as a client to other servers, such as a business logic server getting information from a database server. And of course, there could be multiple clients with multiple servers.
