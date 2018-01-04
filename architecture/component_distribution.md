@@ -73,8 +73,6 @@ X 윈도우 시스템 자체는 가트너 분류 5의 한 예입니다. 애플�
 
 ### 뚱뚱한(fat) 컴포넌트 vs 날씬한(thin) 컴포넌트
 
-A common labelling of components is "fat" or "thin". Fat components take up lots of memory and do complex processing. Thin components on the other hand, do little of either. There don't seem to be any "normal" size components, only fat or thin!
-
 컴포넌트에는 일반적으로 "뚱뚱한(fat) 컴포넌트" 혹은 "날씬한(thin) 컴포넌트"라는 라벨이 붙습니다. 뚱뚱한 컴포넌트는 많은 메모리를 소모하며 복잡한 작업을 처리하는 반면 날씬한 컴포넌트는 적은 메모리를 소모하며 간단한 작업을 수행합니다. "중간" 사이즈의 컴포넌트는 없습니다. 오로지 뚱뚱하거나 날씬한 컴포넌트만이 존재합니다!
 
-뚱뚱함과 날씬함은 상대적인 개념입니다. 브라우저는 보통 날씬한 컴포넌트에 속하는데 웹 페이지를 렌더링 해주는 일이 다이기 때문입니다.
+뚱뚱함과 날씬함은 상대적인 개념입니다. 종종 브라우저는 웹 페이지를 렌더링 해주는 일만 하기 때문에 날씬한 컴포넌트라고 여겨지지만, 제 리눅스에서 동작하는 파이어폭스 브라우저는 제가 생각하기엔 전혀 날씬하다고 할 수 없는, 500 메가바이트에 가까운 메모리를 차지합니다.
