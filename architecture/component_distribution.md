@@ -1,78 +1,82 @@
-## 컴포넌트 분배
+## Component Distribution
 
-여러 애플리케이션을 분해하는 간단하면서도 효과적인 방법은 애플리케이션을 다음 세 가지로 구성해보는 것입니다.
+A simple but effective way of decomposing many applications is to consider them as made up of three parts:
 
-* 프리젠테이션 컴포넌트
-* 애플리케이션 로직
-* 데이터 접근
+* Presentation component
+* Application logic
+* Data access 
 
-*프리젠테이션 컴포넌트*는 데이터 표시 및 입력 받기와 같은 사용자와의 인터랙션을 담당합니다. 이 컴포넌트는 버튼, 리스트, 메뉴등으로 이루어진 GUI 인터페이스일수도 있고 질답의 형태로 이루어진 커맨드라인 스타일의 인터페이스일수도 있습니다. 지금 단계에서 이에 대한 더 자세한 내용은 생략하겠습니다.
+The *presentation component* is responsible for interactions with the user, both displaying data and gathering input. It may be a modern GUI interface with buttons, lists, menus, etc., or an older command-line style interface, asking questions and getting answers. The details are not important at this level.
 
-*애플리케이션 로직*은 사용자의 응답을 해석하고 비즈니스 규칙을 적용하며 쿼리를 준비하고 해당 컴포넌트로부터의 응답을 관리합니다.
+The *application logic* is responsible for interpreting the users' responses, for applying business rules, for preparing queries and managing responses from the their component.
 
-*데이터 접근*은 데이터를 저장하고 불러오는 역할을 담당합니다. 보통은 데이터베이스를 통해 처리되지만, 항상 그렇지는 않습니다.
+The *data access* component is responsible for storing and retrieving data. This will often be through a database, but not necessarily. 
 
-### 가트너 분류
 
-위와 같은 애플리케이션을 세 부분으로 분해하는 기법을 기반으로, 가트너는 클라이언트-서버 시스템에서 컴포넌트를 분배하는 몇 가지 방법을 제안했습니다:
+### Gartner Classification
+
+Based on this threefold decomposition of applications, Gartner considered how the components might be distributed in a client-server system. They came up with five models:
 
 ![gartner](../assets/gartner.gif)
 
-### 예시: 분산 데이터베이스
+    
+### Example: Distributed Database
 
-**가트너 분류: 1**
+**Gartner classification: 1**
 
 ![gartner1](../assets/gartner1.gif)
 
-모바일폰이 좋은 예시중 하나인데, 제한된 메모리로 데이터베이스의 일부를 로컬에 저장할 수 있어 일부 요청에 대해서는 신속한 응답이 가능합니다. 그러나 로컬에 저장되어 있지 않은 데이터가 필요한 경우엔 원격 데이터베이스에 추가 데이터를 요청할 수 있습니다.
+Modern mobile phones make good examples of this: due to limited memory they may store a small part of a database locally so that they can usual respond quickly. However, if data is required that is not held locally, then a request may be made to a remote database for that additional data.
 
-구글맵이 또 다른 좋은 예시입니다. 지도의 모든 데이터는 구글 서버에 저장되어 있는데, 사용자가 지도 데이터를 요청하면 요청된 지역의 주변 지도 정보 또한 다운로드되어 브라우저에 내장된 작은 데이터베이스에 저장됩니다. 사용자가 맵에서 조금 이동해도, 추가로 필요한 지도 데이터가 이미 로컬에 저장되어 있기 때문에 신속한 응답이 가능합니다.
+Google maps forms another good example. All of the maps reside on Google's servers. When one is requested by a user, the "nearby" maps are also downloaded into a small database in the browser. When the user moves the map a little bit, the extra bits required are already in the local store for quick response. 
 
-### 예시: 네트워크 파일 서비스
+### Example: Network File Service
 
-**가트너 분류 2**는 원격 클라이언트가 공유 파일 시스템에 접근할 수 있도록 합니다.
+**Gartner classification 2** allows remote clients access to a shared file system 
 
 ![gartner2](../assets/gartner2.gif)
 
-예시로는 NFS, Microsoft shares, DCE와 같은 시스템들이 있습니다.
+There are many examples of such systems: NFS, Microsoft shares, DCE, etc.
 
-### 예시: 웹
 
-**가트너 분류 3**의 한 예는 자바 애플릿 웹 애플리케이션입니다. 이는 많은 추가 메커니즘들을 가진 분산 하이퍼텍스트 시스템입니다.
+### Example: Web
+
+An example of Gartner classification 3 is the Web with Java applets. This is a distributed hypertext system, with many additional mechanisms.
 
 ![gartner3](../assets/gartner3.gif)
 
-### 예시: 터미널 에뮬레이션
 
-**가트너 분류 4**의 한 예는 터미널 에뮬레이션입니다. 이는 원격 시스템이 로컬 시스템의 일반 터미널처럼 동작하게 할 수 있습니다.
+### Example: Terminal Emulation
+
+An example of Gartner classification 4 is terminal emulation. This allows a remote system to act as a normal terminal on a local system. 
 
 ![gartner4](../assets/gartner4.gif)
 
-텔넷(Telnet)이 이 분류의 가장 일반적인 예시입니다.
+Telnet is the most common example of this. 
 
-### 예시: 익스펙트 (Expect)
+### Example: Expect
 
-익스펙트(Expect)는 가트너 분류 5의 새로운 분류입니다. 이는 커맨드라인 인터페이스와 같은 고전적인 시스템을 감싸는 래퍼 역할을 합니다. 이는 사용자가 GUI와 상호 작용 하고, GUI가 차례대로 커맨드라인 인터페이스와 상호 작용 할 수 있도록 X 윈도우 인터페이스를 만들어냅니다.
+Expect is a novel illustration of Gartner classification 5. It acts as a wrapper around a classical system such as a command-line interface. It builds an X Window interface around this, so that the user interacts with a GUI, and the GUI in turn interacts with the command-line interface.
 
 ![expect](../assets/expect.gif)
 
 
-### 예시: X 윈도우 시스템
+### Example: X Window System
 
-X 윈도우 시스템 자체는 가트너 분류 5의 한 예입니다. 애플리케이션은 `DrawLine`과 같은 GUI 호출을 만들어내지만, 이는 직접 처리되지는 않으며 대신 렌더링을 위해 X 윈도우 서버로 전달됩니다. 이는 애플리케이션부와 화면부를 분리합니다.
+The X Window System itself is an example of Gartner classification 5. An application makes GUI calls such as *DrawLine*, but these are not handled directly but instead passed to an X Window server for rendering. This decouples the application view of windowing and the display view of windowing.
 
 ![gartner5](../assets/gartner5.gif)
 
-### 3 계층 모델
+### Three Tier Models
 
-물론, 여러분이 2개의 계층을 구성해놨다면 3, 4 그 이상의 계층도 구성할 수 있습니다. 다음 다이어그램에는 3 계층 모델이 가질 수 있는 몇 가지 형태들이 나열되어 있습니다.
+Of course, if you have two tiers, then you can have three, four, or more. Some of the three tier possibilities are shown in this diagram: 
 
 ![threetier](../assets/threetier.gif)
 
-현대 웹이 가장 오른쪽 모델의 좋은 예시입니다. 백엔드는 데이터베이스로 구성되며, 종종 데이터베이스 로직중 일부를 저장하는 저장 프로시저를 실행합니다. 중간 계층은 PHP 스크립트 (혹은 루비 온 레일즈, JSP 페이지 등)를 실행하는 아파치와 같은 HTTP 서버입니다. 이는 로직의 일부를 관리하며 로컬에 저장되는 HTML 페이지와 같은 데이터들을 가지고 있습니다. 프론트엔드는 자바스크립트가 관여하고 페이지를 보여주는 브라우저입니다. HTML5에서는 프론트엔드 또한 로컬 데이터베이스를 가질 수 있습니다.
+The modern Web is a good example of the rightmost of these. The backend is made up of a database, often running stored procedures to hold some of the database logic. The middle tier is an HTTP server such as Apache running PHP scripts (or Ruby on Rails, or JSP pages, etc). This will manage some of the logic and will have data such as HTML pages stored locally. The frontend is a browser to display the pages, under the control of some Javascript. In HTML 5, the frontend may also have a local database. 
 
-### 뚱뚱한(fat) 컴포넌트 vs 날씬한(thin) 컴포넌트
+### Fat vs thin
 
-컴포넌트에는 일반적으로 "뚱뚱한(fat) 컴포넌트" 혹은 "날씬한(thin) 컴포넌트"라는 라벨이 붙습니다. 뚱뚱한 컴포넌트는 많은 메모리를 소모하며 복잡한 작업을 처리하는 반면 날씬한 컴포넌트는 적은 메모리를 소모하며 간단한 작업을 수행합니다. "중간" 사이즈의 컴포넌트는 없습니다. 오로지 뚱뚱하거나 날씬한 컴포넌트만이 존재합니다!
+A common labelling of components is "fat" or "thin". Fat components take up lots of memory and do complex processing. Thin components on the other hand, do little of either. There don't seem to be any "normal" size components, only fat or thin!
 
-뚱뚱함과 날씬함은 상대적인 개념입니다. 종종 브라우저는 웹 페이지를 렌더링 해주는 일만 하기 때문에 날씬한 컴포넌트라고 여겨지지만, 제 리눅스에서 동작하는 파이어폭스 브라우저는 제가 생각하기엔 전혀 날씬하다고 할 수 없는, 500 메가바이트에 가까운 메모리를 차지합니다.
+Fatness or thinness is a relative concept. Browsers are often labelled as thin because "all they do is display web pages". Firefox on my Linux box takes nearly 1/2 a gigabyte of memory, which I don't regard as small at all! 
