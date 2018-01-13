@@ -1,28 +1,28 @@
-## The TCP/IP stack
+## TCP/IP 스택
 
-The OSI model was devised using a committee process wherein the standard was set up and then implemented. Some parts of the OSI standard are obscure, some parts cannot easily be implemented, some parts have not been implemented.
+OSI 모델은 표준이 수립되고 만들어지는 위원회 프로세스를 사용해 고안되었다. OSI 표준의 일부는 모호하며, 일부는 구현하기 쉽지 않고, 또 일부는 아직 구현되지 않았습니다.
 
-The TCP/IP protocol was devised through a long-running DARPA project. This worked by implementation followed by RFCs (Request For Comment). TCP/IP is the principal Unix networking protocol. TCP/IP = Transmission Control Protocol/Internet Protocol.
+TCP/IP 프로토콜은 DARPA (방위고등연구계획국)의 장기 프로젝트를 통해 고안되었습니다. 이는 RFCs (Request For Comment)를 따르는 구현에 의해 동작합니다. TCP/IP (Transmission Control Protocol/Internet Protocol, 전송 제어 프로토콜/인터넷 프로토콜)는 주요 유닉스 네트워킹 프로토콜입니다.
 
-The TCP/IP stack is shorter than the OSI one: 
+TCP/IP 스택은 OSI 스택보다 단순합니다.
 
 ![tcp_stack](../assets/tcp_stack.gif)
 
-TCP is a connection-oriented protocol, UDP (User Datagram Protocol) is a connectionless protocol. 
+TCP는 연결 지향 프로토콜이며 UDP (User Datagram Protocol, 유저 데이터그램 프로토콜)은 비연결 프로토콜입니다.
 
 
-### IP datagrams
+### IP 데이터그램
 
-The IP layer provides a connectionless and unreliable delivery system. It considers each datagram independently of the others. Any association between datagrams must be supplied by the higher layers.
+IP 계층은 비연결적이고 신뢰할 수 없는 전달 시스템을 제공합니다. 이는 각각의 데이터그램을 다른것들과 독립적으로 처리합니다. 다이어그램간의 모든 관계는 상위 계층에서 제공해야합니다.
 
-The IP layer supplies a checksum that includes its own header. The header includes the source and destination addresses.
+IP 계층은 자체 헤더가 포함되어 있는 체크섬을 제공합니다. 헤더에는 출발지 및 목적지 주소가 포함되어 있습니다.
 
-The IP layer handles routing through an Internet. It is also responsible for breaking up large datagrams into smaller ones for transmission and reassembling them at the other end.
+IP 계층은 인터넷을 통해 라우팅을 처리합니다. 이는 전송을 위해 큰 데이터그램을 작은 데이터그램으로 분해하고 데이터를 받는 쪽에서 이들을 재결합합니다.
 
 ### UDP
 
-UDP is also connectionless and unreliable. What it adds to IP is a checksum for the contents of the datagram and port numbers. These are used to give a client/server model - see later.
+UDP 또한 비연결적이고 신뢰할 수 없는 시스템을 제공합니다. 이는 데이터그램의 내용과 포트 번호에 대한 체크섬을 IP에 추가합니다. 이들은 클라이언트/서버 모델을 제공하는데 사용됩니다. 이는 나중에 살펴보도록 하겠습니다.
 
 ### TCP
 
-TCP supplies logic to give a reliable connection-oriented protocol above IP. It provides a virtual circuit that two processes can use to communicate. It also uses port numbers to identify services on a host. 
+TCP는 IP 계층 위에서 신뢰 가능한 연결 지향적인 프로토콜을 제공하기 위한 로직을 제공합니다. 이는 두 프로세스가 통신을 할 수 있도록 하는 가상의 회로를 제공합니다. 이는 또한 포트 번호를 사용하여 호스트의 서비스를 식별합니다.
