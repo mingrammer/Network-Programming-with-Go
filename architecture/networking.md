@@ -1,15 +1,15 @@
-## Networking
+## 네트워킹
 
-A network is a communications system for connecting end systems called hosts. The mechanisms of connection might be copper wire, ethernet, fiber optic or wireless, but that won't concern us here. A local area network (LAN) connects computers that are close together, typically belonging to a home, small organization or part of a larger organization.
+네트워크는 호스트라고 불리는 종단 시스템들을 연결하기 위한 통신 시스템입니다. 연결에 대한 메커니즘으로는 구리선이 될 수도 있고, 이더넷 케이블이나 광케이블, 또는 무선 등이 될 수도 있지만, 여기서는 그런 자세한 부분에 대해선 신경쓰지 않도록 하겠습니다. 근거리 통신망 (LAN)은 물리적으로 가까운 위치에 존재하는 컴퓨터들을 연결해줍니다. 보통 집에 있는 컴퓨터들이나, 큰 조직의 일부분인 작은 조직 내의 컴퓨터들을 연결해줍니다.
 
-A Wide Area Network (WAN) connects computers across a larger physical area, such as between cities. There are other types as well, such as MANs (Metropolitan Area Network), PANs (Personal Area Networks) and even BANs (Body Area Network).
+원거리 통신망 (WAN)은 물리적으로 먼 곳(예를 들면 도시 간의 연결)에 위치한 컴퓨터들을 연결해줍니다. LAN과 WAN 외에도 다른 종류의 네트워크가 존재하긴 합니다. 예를 들면 MANs (광역 도시간의 연결), PANs (개인 통신망 간의 연결), 그리고 심지어는 BANs (신체간의 연결)도 있습니다 (IoT와 관련하여 의료 목적으로 사용되는 통신 구성망; [참조](https://en.wikipedia.org/wiki/Body_area_network)).
 
-An internet is a connection of two or more distinct networks, typically LANs or WANs. An intranet is an internet with all networks belonging to a single organization.
+인터넷(internet)은 두 개 혹은 그 이상의 구별된 네트워크들의 연결이며, 일반적으로는 LAN 이나 WAN 들이 연결되어 있습니다. 인트라넷(intranet)은 모든 네트워크들이 단 하나의 조직 내에 속한 인터넷을 의미합니다.
 
-There are significant differences between an internet and an intranet. Typically an intranet will be under a single administrative control, which will impose a single set of coherent policies. An internet on the other hand will not be under the control of a single body, and the controls exercised over different parts may not even be compatible.
+인터넷과 인트라넷 사이에는 굉장한 차이가 있습니다. 일반적으로 인트라넷은 단일된 제어를 받으며, 한 종류의 정책이 적용됩니다. 반면 인터넷은 누군가의 제어를 받지 않으며, 각기 다른 제약들이 존재하더라도 각 정책들은 서로 굉장히 다릅니다.
 
-A trivial example of such differences is that an intranet will often be restricted to computers by a small number of vendors running a standardized version of a particular operating system. On the other hand, an internet will often have a smorgasbord of different computers and operating systems.
+이렇게 굉장히 다른 정책의 간단한 예로, 인트라넷은 종종 몇몇의 벤더에서 실행되는 표준 버전의 특정 운영체제에서만 동작하도록 제약을 걸곤 합니다. 반면 인터넷에서는 다양한 컴퓨터들과 다양한 운영체제에서 모두 동작하지요.
 
-The techniques of this book will be applicable to internets. They will also be valid for intranets, but there you will also find specialized, non-portable systems.
+이 책에서 다루는 테크닉들은 인터넷에 적용 가능합니다. 인트라넷에서도 사용 가능합니다만, 인트라넷에서 사용하려면 아마 특별한, 비표준의 시스템에 적용시켜야 할 거에요.
 
-And then there is the "mother" of all internets: The Internet. This is just a very, very large internet that connects us to Google, my computer to your computer and so on. 
+그리고 모든 인터넷(internet)들의 어머니 급 되는 존재가 있습니다. 바로 인터넷(The Internet) 입니다. 그냥 굉장히 아주 아주 큰 인터넷(internet)이며, 우리를 Google로 연결해주고, 너와 나를 연결해주는 존재입니다.

@@ -1,18 +1,18 @@
-## Connection Models
+## 연결 모델
 
-In order for two computers to communicate, they must set up a path whereby they can send at least one message in a session. There are two major models for this:
+두 개의 컴퓨터가 통신을 하기 위하여서는 반드시 세션 내에서 최소한 한 개 이상의 메세지를 전송할 수 있도록 경로가 마련되어 있어야 합니다. 이를 위해 크게 두 가지 모델이 존재합니다.
 
-* Connection oriented
-* Connectionless
+* 연결 중심형 (Connection oriented)
+* 무연결형 (Connectionless)
 
-### Connection oriented
+### 연결 중심형
 
-A single connection is established for the session. Two-way communications flow along the connection. When the session is over, the connection is broken. The analogy is to a phone conversation. An example is TCP
+세션 사이에 하나의 커넥션이 맺어집니다. 연결 중에는 양방향 통신이 가능합니다. 세션이 종료되면 연결은 해제됩니다. 휴대폰으로 통화를 하는 것이 이에 대한 실생활의 좋은 예입니다. TCP 프로토콜 통신이 이 모델에 속합니다.
 
-### Connectionless
+### 무연결형
 
-In a connectionless system, messages are sent independent of each other. Ordinary mail is the analogy. Connectionless messages may arrive out of order. An example is the IP protocol. 
+무연결형 시스템에서는 서로의 존재에 무관하게 메세지를 전송합니다. 메일을 보내는 것이 이에 대한 실생활의 좋은 예입니다. 무연결형 메세지들은 순서 없이 도착할 수도 있습니다. IP 프로토콜 통신이 이 모델에 속합니다.
 
-Connection oriented transports may be established on top of connectionless ones - TCP over IP. Connectionless transports may be established on top of connection oriented ones - HTTP over TCP.
+연결 중심형 전송이 무연결형 전송 위에서 동작할 수도 있습니다. IP를 통해 TCP 통신을 하는 경우가 그에 속합니다. 한편 무연결형 전송이 연결 중심형 전송 위에서 동작할 수도 있습니다. TCP를 통해 HTTP 통신을 하는 경우가 그에 속합니다.
 
-There can be variations on these. For example, a session might enforce messages arriving, but might not guarantee that they arrive in the order sent. However, these two are the most common. 
+이러한 것들에 다양한 버전이 존재하기도 합니다. 예를 들어, 세션이 존재한다면 메세지가 도착하는 것은 보장되지만, 보내는 순서 대로 도착한다는 보장은 할 수 없습니다. 그럼에도 예시로 든 두 가지가 제일 흔히 사용되는 경우입니다.

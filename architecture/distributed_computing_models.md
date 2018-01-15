@@ -1,11 +1,11 @@
-## Distributed Computing Models
+## 분산형 컴퓨팅 모델
 
-At the highest level, we could consider the equivalence or the non-equivalence of components of a distributed system. The most common occurrence is an asymmetric one: a client sends requests to a server, and the server responds. This is a *client-server* system.
+추상적인 관점에서 우리는 분산형 시스템의 컴포넌트들의 동등함, 혹은 동등하지 않음에 대해 고려해볼 수 있습니다. 가장 흔한 경우는 동등하지 않은, 비대칭의 경우입니다. 클라이언트가 서버에 요청을 보내고, 서버는 응답을 합니다. 이 모델을 *클라이언트-서버* 시스템이라고 부릅니다.
 
-If both components are equivalent, both able to initiate and to respond to messages, then we have a *peer-to-peer* system. Note that this is a logical classification: one peer may be a 16,000 core mainframe, the other might be a mobile phone. But if both can act similarly then they are peers.
+만일 두 컴포넌트가 동등하다면, 두 컴포넌트 모두 메세지 전송을 시작하거나 메세지에 응답할 수 있으며, 그러면 *피어 간 연결(P2P)* 시스템을 갖게 되는 것입니다. 이것이 단지 논리적인 분류임을 주의하세요. 즉, 어떤 한 피어가 16,000개의 코어를 가진 메인프레임이 되고, 상대 피어가 휴대폰이 되는 경우가 있을 수도 있는 것입니다. 그럼에도 양측이 유사하게 동작한다면, 그들은 서로 피어인 것입니다.
 
-A third model is the so-called *filter*. Here one component passes information to another which modifies it before passing it to a third. This is a fairly common model: for example, the middle component gets information from a database as SQL records and transforms it into an HTML table for the third component (which might be a browser).
+세 번째 모델은 흔히 *필터*라고 불립니다. 필터 모델에서는 한 컴포넌트 A가 다른 컴포넌트 B로 정보를 넘기고, 컴포넌트 B는 컴포넌트 A로부터 정보를 받아 수정한 후, 컴포넌트 C로 넘깁니다. 이 모델 역시 꽤나 흔히 사용되는 모델입니다. 예를 들어 중간에 존재하는 컴포넌트 (예제에서는 컴포넌트 B)는 SQL을 통해 데이터베이스로부터 레코드를 받아온 후, HTML 테이블로 변환하여 다음 컴포넌트 (예제에서는 컴포넌트 C)로 넘겨줍니다 (아마 웹 브라우저겠죠).
 
-These are illustrated as: 
+다음의 그림은 이에 대해 설명합니다.
 
 ![peer](../assets/peer.gif)

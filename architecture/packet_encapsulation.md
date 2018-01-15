@@ -1,9 +1,9 @@
-## Packet encapsulation
+## 패킷 캡슐화
 
-The communication between layers in either the OSI or the TCP/IP stacks is done by sending packets of data from one layer to the next, and then eventually across the network. Each layer has administrative information that it has to keep about its own layer. It does this by adding header information to the packet it receives from the layer above, as the packet passes down. On the receiving side, these headers are removed as the packet moves up.
+레이어 간의 통신은 OSI 스택이나 TCP/IP 스택 내에서 패킷을 한 레이어에서 다음 레이어로 데이터를 전송하는 것으로 이루어지며, 그 데이터는 결국에는 네트워크를 통해 전송됩니다. 각 레이어는 해당 레이어에 관한 정보들을 갖습니다. 상위 레이어로부터 받은 패킷에 헤더를 추가하여 해당 레이어의 정보를 포함시키어 패킷을 전송합니다. 패킷을 수신하는 측면에서는 이러한 헤더 정보를 제거하여 원래 정보를 복구합니다.
 
-For example, the TFTP (Trivial File Transfer Protocol) moves files from one computer to another. It uses the UDP protocol on top of the IP protocol, which may be sent over Ethernet. This looks like:
+예를 들어, TFTP (Trivial File Transfer Protocol) 프로토콜은 한 컴퓨터에서 다른 컴퓨터로 파일을 이동시킵니다. TFTP 는 IP 위의 UDP 프로토콜을 이용하며, 이는 곧 이더넷을 통해 전송됩니다. 다음의 그림은 이에 대해 설명합니다.
 
 ![packets](../assets/packets.gif)
 
-The packet transmitted over ethernet, is of course the bottom one.
+이더넷을 통해 전송된 패킷은 당연히 제일 하단에 존재하는 녀석입니다.
