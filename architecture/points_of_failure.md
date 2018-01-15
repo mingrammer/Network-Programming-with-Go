@@ -1,18 +1,18 @@
-## Points of Failure
+## 장애 지점
 
-Distributed applications run in a complex environment. This makes them much more prone to failure than standalone applications on a single computer. The points of failure include
+분산 애플리케이션은 복잡한 환경에서 돌아갑니다. 따라서 단일 컴퓨터에서 돌아가는 단일 애플리케이션 보다 장애 발생 가능성이 훨씬 높습니다. 장애 지점의 예는 다음과 같습니다.
 
-* The client side of the application could crash
-* The client system may have h/w problems
-* The client's network card could fail
-* Network contention could cause timeouts
-* There may be network address conflicts
-* Network elements such as routers could fail
-* Transmission errors may lose messages
-* The client and server versions may be incompatible
-* The server's network card could fail
-* The server system may have h/w problems
-* The server s/w may crash
-* The server's database may become corrupted 
+* 애플리케이션의 클라이언트에서 발생할 수 있는 크래시
+* 클라이언스 시스템에서의 하드웨어적 문제
+* 클라이언트 네트워크 카드 장애
+* 네트워크 연결 타임 아웃
+* 네트워크 주소 충돌
+* 라우터와 같은 네트워크 구성 요소 장애
+* 트랜젝션 에러로 인한 메시지 (데이터) 분실
+* 클라이언트와 서버간의 버전 비호환성
+* 서버 네트워크 카드 장애
+* 서버 시스템에서의 하드웨어적 문제
+* 서버 소프트웨어 크래시
+* 서버단 데이터베이스 오류
 
-Applications have to be designed with these possible failures in mind. Any action performed by one component must be recoverable if failure occurs in some other part of the system. Techniques such as transactions and continuous error checking need to be employed to avoid errors. 
+위와 같은 장애들의 가능성을 염두에 두고 애플리케이션을 설계해야합니다. 시스템의 다른 부분에서 장애가 발생하면 한 컴포넌트가 수행했던 모든 작업들은 반드시 복구 가능해야합니다. 에러를 피하기 위해선 트랜잭션 및 지속적 에러 검사와 같은 기술들을 활용해야합니다.

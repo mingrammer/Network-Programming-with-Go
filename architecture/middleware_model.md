@@ -1,44 +1,41 @@
-## Middleware 
+## 미들웨어 
 
-### Middleware model
+### 미들웨어 모델
 
-Middleware is tech "glue" connecting components of a distributed system. The middleware model is 
+미들웨어는 분산된 시스템의 컴포넌트들을 연결해주는 접착제같은 역할을 합니다. 미들웨어 모델은 다음과 같습니다.
 
 ![middleware](../assets/middleware.gif)
 
-### Middleware
+### 미들웨어
 
-Components of middleware include
+미들웨어의 구성요소는 다음과 같습니다.
 
-* The network services include things like TCP/IP
+* TCP/IP를 포함하는 네트워크 서비스
+* 미들웨어 계층은 네트워크 서비스를 사용하는 애플리케이션 독립적인 소프트웨어입니다
+* 미들웨어의 예로는 DCE, RPC, Corba가 있습니다
+* 미들웨어는 한 가지 기능 (예: RPC) 혹은 여러 기능 (예: DCE)을 수행할 수 있습니다.
 
-* The middleware layer is application-independent s/w using the network services. 
+### 미들웨어 예시
 
-* Examples of middleware are: DCE, RPC, Corba
+미들웨어의 예는 다음과 같습니다.
 
-* Middleware may only perform one function (such as RPC) or many (such as DCE) 
-
-### Middleware examples
-
-Examples of middleware include
-
-* Primitive services such as terminal emulators, file transfer, email
-* Basic services such as RPC
-* Integrated services such as DCE, Network O/S
-* Distributed object services such as CORBA, OLE/ActiveX
-* Mobile object services such as RMI, Jini
-* World Wide Web 
+* 터미널 에뮬레이터, 파일 전송, 이메일과 같은 아주 기본적인 서비스
+* RPC와 같은 기본적인 서비스
+* DCE, 네트워크 운영체제와 같은 통합 서비스
+* CORBA, OLE/ActiveX와 같은 분산 객체 서비스
+* RMI, Jini와 같은 모바일 객체 서비스
+* 월드 와이드 웹
 
 
-### Middleware functions
+### 미들웨어 기능
 
-The functions of middleware include
+미들웨어는 다음과 같은 기능들을 수행합니다.
 
-* Initiation of processes at different computers
-* Session management
-* Directory services to allow clients to locate servers
-* Remote data access
-* Concurrency control to allow servers to handle multiple clients
-* Security and integrity
-* Monitoring
-* Termination of processes both local and remote 
+* 다른 컴퓨터에서 프로세스 시작
+* 세션 관리
+* 클라이언트가 서버를 찾을 수 있도록 해주는 디렉토리 서비스
+* 원격 데이터 접근
+* 서버의 다중 클라이언트 처리를 위한 동시성 제어
+* 보안 및 무결성
+* 모니터링
+* 로컬 및 원격지의 프로세스 종료
