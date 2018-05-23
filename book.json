@@ -8,11 +8,11 @@
     ],
     "pluginsConfig": {
         "edit-link": {
-            "base": "https://github.com/tumregels/Network-Programming-with-Go/edit/master",
+            "base": "https://github.com/mingrammer/network-programming-with-go/edit/korean",
             "label": "Edit"
         },
         "github": {
-            "url": "https://github.com/tumregels/Network-Programming-with-Go"
+            "url": "https://github.com/mingrammer/network-programming-with-go"
         }
     }
 }
