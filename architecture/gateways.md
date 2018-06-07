@@ -1,3 +1,3 @@
-## Gateways
+## 게이트웨이
 
-A gateway is a generic term for an entity used to connect two or more networks. A repeater operates at the physical level and copies the information from one subnet to another. A bridge operates at the data link layer level and copies frames between networks. A router operates at the network level and not only moves information between networks but also decides on the route. 
+게이트웨이는 두 개 혹은 그 이상의 네트워크들을 연결하기 위해 사용되는 개체를 지칭하는 일반적인 용어입니다. 리피터는 물리적인 레이어에서 동작하며, 한 서브넷으로부터 다른 서브넷으로 데이터를 복제합니다. 브리지는 데이터 링크 레이어에서 동작하며, 한 네트워크로부터 다른 네트워크로 데이터를 복제합니다. 라우터는 네트워크 레이어에서 동작하며, 네트워크 간에 정보를 이동시킬 뿐 아니라 어느 경로로 이동시킬 지도 결정합니다.

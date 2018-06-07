@@ -1,42 +1,42 @@
-## Protocol Layers
+## 프로토콜 레이어
 
-Distributed systems are hard. There are multiple computers involved, which have to be connected in some way. Programs have to be written to run on each computer in the system and they all have to co-operate to get a distributed task done.
+분산형 시스템은 어렵습니다. 많은 컴퓨터들이 포함되어 있으며, 어쨌든 각각의 컴퓨터는 어떠한 방법으로라도 서로 연결되어야 합니다. 프로그램들은 각각의 컴퓨터의 시스템에서 동작하도록 작성되어야 하며, 분산된 일들을 끝마치기 위해 서로 협업하여야 합니다.
 
-The common way to deal with complexity is to break it down into smaller and simpler parts. These parts have their own structure, but they also have defined means of communicating with other related parts. In distributed systems, the parts are called protocol layers and they have clearly defined functions. They form a stack, with each layer communicating with the layer above and the layer below. The communication between layers is defined by protocols.
+흔히 복잡성을 다루기 위해 사용되는 일반적인 방법에는, 그 복잡한 문제를 더욱 작고 간단한 부분으로 나누어 보는 것이 있습니다. 나누어진 각 부분들은 그들만의 구조가 있지만, 각 부분 간에도 서로 연관된 부분 간에 통신할 수 있는 방법을 정의하고 있습니다. 분산형 시스템에서는, 이렇게 나뉘어진 부분들을 프로토콜 레이어라고 부르며, 각 프로토콜 레이어는 명확하게 그들의 기능들을 정의하고 있습니다. 일반적으로 프로토콜 레이어는 스택 구조를 이루며, 각각의 레이어가 위 아래의 레이어와 통신하는 구조를 띄고 있습니다. 각 레이어들 간의 통신은 프로토콜에 의해 정의됩니다.
 
-Network communications requires protocols to cover high-level application communication all the way down to wire communication and the complexity handled by encapsulation in protocol layers.
+네트워크 통신에서 프로토콜은 고수준의 어플리케이션 통신부터 저수준의 물리적인 통신까지를 책임지며, 캡슐화를 이용하여 프로토콜 레이어에서 발생하는 복잡성을 처리합니다.
 
-### ISO OSI Protocol
+### ISO OSI 프로토콜
 
-Although it was never properly implemented, the OSI (Open Systems Interconnect) protocol has been a major influence in ways of talking about and influencing distributed systems design. It is commonly given in the following figure: 
+비록 적절히 구현된 적은 한번도 없지만, OSI (Open Systems Interconnect) 프로토콜은 개념적으로 분산형 시스템 설계에 많은 영향을 주었습니다. 흔히 다음과 같은 모양을 갖습니다:
 
 ![iso](../assets/iso.gif)
 
-OSI layers
+OSI 레이어
 
-The function of each layer is:
+각 레이어들의 기능:
 
-* Network layer provides switching and routing technologies
+* 네트워크 레이어(Network layer)는 스위칭과 라우팅 기술을 제공함
 
-* Transport layer provides transparent transfer of data between end systems and is responsible for end-to-end error recovery and flow control
+* 전송 레이어(Transport layer)는 엔드 시스템들 간의 데이터들의 투명한 통신을 제공하며, 장애 복구 및 제어를 책임지고 있음
 
-* Session layer establishes, manages and terminates connections between applications.
+* 세션 레이어(Session layer)는 어플리케이션들 간의 연결을 수립하고, 관리하고, 종료함
 
-* Presentation layer provides independence from differences in data representation (e.g. encryption)
+* 프레젠테이션 레이어(Presentation layer)는 각각의 다른 데이터 표현(예를 들어 암호화)의 독립성을 제공함
 
-* Application layer supports application and end-user processes
+* 응용 레이어(Application layer)는 응용 프로그램과 사용자의 프로세스를 도와줌
 
 
-### TCP/IP Protocol
+### TCP/IP 프로토콜
 
-While the OSI model was being argued, debated, partly implemented and fought over, the DARPA internet research project was busy building the TCP/IP protocols. These have been immensely successful and have led to The Internet (with capitals). This is a much simpler stack:
+OSI 모델에 대해 논쟁이 벌어지며 일부분이 구현되는 동안, DARPA 인터넷 연구 프로젝트에서는 TCP/IP 프로토콜을 구현하였습니다. TCP/IP 프로토콜은 굉장히 성공적이였고, '인터넷' 을 이끌었습니다. 이 프로토콜은 훨씬 간단한 스택을 갖습니다:
 
 ![tcp_stack](../assets/tcp_stack.gif)
 
 
-### Some Alternative Protocols
+### 몇몇 대체 프로토콜
 
-Although it almost seems like it, the TCP/IP protocols are not the only ones in existence and in the long run may not even be the most successful. There are many protocols occupying significant niches, such as
+거의 비슷하게 보이지만, TCP/IP 프로토콜만이 존재하는 유일한 프로토콜은 아니며, 결국에 가장 성공적이지 않을 수도 있습니다. 꽤나 큰 틈새시장을 노려 비집고 들어온 다양한 프로토콜들이 있는데, 다음과 같습니다.
 
 * Firewire
 * USB
@@ -44,6 +44,6 @@ Although it almost seems like it, the TCP/IP protocols are not the only ones in 
 * WiFi
 
 
-There is active work continuing on many other protocols, even quite bizarre ones such as those for the "internet in space."
+또한 이 외에도 활발하게 작업중인 많은 프로토콜들이 있으며, "우주에서 인터넷"을 하기 위한 꽤나 기괴한 것들도 존재합니다.
 
-The focus in this book will be on the TCP/IP, but you should be aware of these other ones. 
+이 책에서는 TCP/IP 프로토콜에 대해 다룰 것이지만, 당신은 다른 프로토콜들도 알고 있어야 합니다.
