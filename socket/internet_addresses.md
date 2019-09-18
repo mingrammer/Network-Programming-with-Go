@@ -1,47 +1,45 @@
-## Internet addresses
+## 인터넷 주소
 
-In order to use a service you must be able to find it. 
-The Internet uses an address scheme for devices such as computers so that they can be located. 
-This addressing scheme was originally devised when there were only a handful of connected computers, and very generously allowed upto $$2^{32}$$ addresses, using a 32 bit unsigned integer. 
-These are the so-called IPv4 addresses. 
- 
-In recent years, the number of connected (or at least directly addressable) devices has threatened to exceed this number, and so "any day now" we will switch to IPv6 addressing which will allow upto $$2^{128}$$ addresses, using an unsigned 128 bit integer. 
-The changeover is most likely to be forced by emerging countries, as the developed world has already taken nearly all of the pool of IPv4 addresses.
+서비스를 사용하기 위해선 해당 서비스가 어디에 있는지 찾을 수 있어야 합니다.
 
-### IPv4 addresses
+인터넷은 컴퓨터와 같은 장치에 주소 체계를 사용하여 장치를 찾을 수 있도록 합니다.
 
-The address is a 32 bit integer which gives the IP address. 
-This addresses down to a network interface card on a single device. 
-The address is usually written as four bytes in decimal with a dot `"."` between them, as in `127.0.0.1` or `66.102.11.104`.
+이 주소 체계는 원래 소수의 컴퓨터들만이 연결되어 있을 때 고안되었으며 32비트 부호 없는 정수를 사용하여 2^32개의 주소까지 허용되었습니다. 이 주소 체계를 소위 IPv4 주소라고 부릅니다.
 
-The IP address of any device is generally composed of two parts: the address of the network in which the device resides, and the address of the device within that network. 
-Once upon a time, the split between network address and internal address was simple and was based upon the bytes used in the IP address. 
+최근 들어, 연결된 (적어도 직접 연결 가능한) 장치의 갯수가 IPv4 주소 갯수를 초과할 것이라고 위협하고 있기 때문에 언젠간 128비트 부호 없는 정수를 사용하여 2^128개의 주소까지 허용되는 IPv6 주소 체계로 전환해야 할 것입니다.
 
+선진국들이 이미 IPv4 주소풀의 대부분을 차지하고 있기 때문에 이러한 전환은 신흥 국가들에 의해 행해질 가능성이 높습니다.
 
-* In a class A network, the first byte identifies the network, while the last three identify the device. There are only 128 class A networks, owned by the very early players in the internet space such as IBM, the General Electric Company and MIT [[1]](http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml)
-    
-* Class B networks use the first two bytes to identify the network and the last two to identify devices within the subnet. This allows upto $$2^{16}$$ (65,536) devices on a subnet
-    
-* Class C networks use the first three bytes to identify the network and the last one to identify devices within that network. This allows upto $$2^8$$ (actually 254, not 256) devices
+### IPv4 주소
 
-This scheme doesn't work well if you want, say, 400 computers on a network. 254 is too small, while 65,536 is too large. 
-In binary arithmetic terms, you want about 512. 
-This can be achieved by using a 23 bit network address and 9 bits for the device addresses. 
-Similarly, if you want upto 1024 devices, you use a 22 bit network address and a 10 bit device address.
+IP 주소를 제공하는 32비트 정수입니다.
+단일 장치의 네트워크 인터페이스 카드로 주소를 지정합니다.
+주소는 보통  `127.0.0.1` 혹은 `66.102.11.104`와 같이 `"."` 으로 구분된 네 바이트의 십진수로 나타냅니다.
 
-Given an IP address of a device, and knowing how many bits N are used for the network address gives a relatively straightforward process for extracting the network address and the device address within that network. 
-Form a "network mask" which is a 32-bit binary number with all ones in the first N places and all zeroes in the remaining ones. 
-For example, if 16 bits are used for the network address, the mask is `11111111111111110000000000000000`. 
-It's a little inconvenient using binary, so decimal bytes are usually used. 
-The netmask for 16 bit network addresses is `255.255.0.0`, for 24 bit network addresses it is `255.255.255.0`, while for 23 bit addresses it would be `255.255.254.0` and for 22 bit addresses it would be `255.255.252.0`.
+모든 장치의 IP 주소는 일반적으로 두 부분으로 구성되는데 하나는 장치가 속한 네트워크의 주소이고 다른 하나는 네트워크 내에서의 장치의 주소입니다.
 
-Then to find the network of a device, bit-wise AND it's IP address with the network mask, while the device address within the subnet is found with bit-wise AND of the 1's complement of the mask with the IP address. 
+예전에는 네트워크 주소와 내부 주소간의 구분이 단순했으며 IP 주소에 사용된 바이트에 기반하였습니다.
 
 
-### IPv6 addresses
+* 클래스 A 네트워크에서는, 첫 바이트가 네트워크 식별자이고 나머지 세 바이트가 장치의 식별자입니다. A 네트워크는 128개만이 존재하며 IBM, 제너럴 일렉트릭 (General Electric Company) 그리고 MIT와 같은 인터넷의 초창기 선두주자들이 소유하고 있습니다. [[1]](http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml)
+* 클래스 B 네트워크는 첫 두 바이트를 네트워크 식별자로 사용하며 나머지 두 바이트로 서브넷 내의 장치들을 식별합니다. 이는 하나의 서브넷에 2^16 (65,536)개까지의 장치를 연결할 수 있습니다.
+* 클래스 C 네트워크는 첫 세 바이트를 네트워크 식별자로 사용하며 나머지 하나의 바이트로 네트워크 내의 장치들을 식별합니다. 이는 2^8 (정확히는 256이 아닌 254)개 까지의 장치를 연결할 수 있습니다.
 
-The internet has grown vastly beyond original expectations. The initially generous 32-bit addressing scheme is on the verge of running out. There are unpleasant workarounds such as NAT addressing, but eventually we will have to switch to a wider address space. IPv6 uses 128-bit addresses. Even bytes becomes cumbersome to express such addresses, so hexadecimal digits are used, grouped into 4 digits and separated by a colon `":"`. A typical address might be `2002:c0e8:82e7:0:0:0:c0e8:82e7`.
+이 체계는 만약에 여러분이 한 네트워크 안에서 400대의 컴퓨터를 사용하고자하면 잘 동작하지 않을수도 있습니다. 254는 너무 작고, 65,536은 너무 큽니다.
+이 경우, 이진 산술에서는 512가 필요합니다.
+이는 23비트의 네트워크 주소와 9비트의 장치 주소를 사용하면 가능합니다.
+마찬가지로, 최대 1024개의 장치를 사용하기 위해선 22비트의 네트워크 주소와 10 비트의 장치 주소를 사용하면 됩니다.
 
-These addresses are not easy to remember! DNS will become even more important. There are tricks to reducing some addresses, such as eliding zeroes and repeated digits. For example, "localhost" is `0:0:0:0:0:0:0:1`, which can be shortened to `::1`.
+한 장치의 IP 주소가 주어졌고 얼마만큼의 (N) 비트가 네트워크 주소로 사용되는지를 안다면 네트워크 주소와 네트워크 주소 내의 장치 주소를 알아내는 것이 비교적 간단해집니다.
+"네트워크 마스크"를 만듭시다. 이는 32비트의 이진수로 첫 N 자리 비트는 1로 이루어져 있으며 나머지 비트는 0으로 이루어져 있습니다.
+예를 들어, 만약 네트워크 주소로 16비트가 사용된다면 마스크는 `11111111111111110000000000000000`가 될 것입니다.
+이진수를 사용하기는 조금 불편하기 때문에 보통은 10진수 바이트가 사용됩니다.
+16비트 네트워크 주소에 대한 네트워크 마스크는 `255.255.0.0`이며 24비트 네트워크 주소에 대해서는 `255.255.255.0`이 됩니다. 반면에 23비트 주소에 대해서는 `255.255.254.0`이 되며 22비트 주소에 대해서는 `255.255.252.0`이 될 것입니다.
 
+따라서 장치의 네트워크 주소를 알아내기 위해선, 장치의 IP 주소에 네트워크 마스크로 AND 비트 연산을 취하면 되고, 서브넷 내의 장치 주소는 IP 주소에 마스크의 1의 보수로 AND 비트 연산을 취함으로써 알아낼 수 있습니다.
 
+### IPv6 주소
+
+인터넷은 기대 이상으로 빠르게 성장하였습니다. 시간이 지나면서 처음에는 충분했던 32비트 주소 체계가 고갈되었습니다. NAT 주소 지정과 같은 불편한 해결책들도 있지만, 결국에는 더 넓은 주소 공간으로 전환해야합니다. IPv6는 128비트 주소를 사용합니다. 바이트로는 이 주소들을 다루기가 번거롭기 때문에, 16진수가 사용되며 4 자릿수로 그룹핑되고 콜론 `:`으로 구분됩니다. 일반적인 주소는 `2002:c0e8:82e7:0:0:0:c0e8:82e7`와 같이 표현됩니다.
+
+이러한 주소들은 기억하기 쉽지 않기 때문에 DNS가 좀 더 중요해질 것입니다. 0을 생략하거나 자릿수 반복과 같은 트릭으로 일부 주소들을 줄일 수 있습니다. 예를 들어, "localhost"를 나타내는 `0:0:0:0:0:0:0:1`는 `::1`로 줄일 수 있습니다.

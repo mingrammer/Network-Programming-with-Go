@@ -1,16 +1,16 @@
-## IP address type
+## IP 주소 타입
 
-The package `"net"` defines many types, functions and methods of use in Go network programming. The type `IP` is defined as byte slices 
+`"net"` 패키지는 Go 네트워크 프로그래밍에서 사용되는 다양한 타입, 함수 및 메서드를 제공합니다. `IP` 타입은 바이트의 슬라이스로 정의됩니다.
 
 ```go
 type IP []byte
 ```
 
-There are several functions to manipulate a variable of type IP, but you are likely to use only some of them in practice. 
-For example, the function ParseIP(String) will take a dotted IPv4 address or a colon IPv6 address, while the IP method String will return a string. 
-Note that you may not get back what you started with: the string form of `0:0:0:0:0:0:0:1` is `::1`.
+IP 타입의 변수를 조작하기 위한 여러 함수들이 존재하지만, 실제로는 그 중 일부만 사용합니다.
+예를 들어, ParseIP(String) 함수는 점으로 구분된 IPv4 주소 또는 콜론으로 구분된 IPv6 주소를 인자로 사용하며, IP 타입이 가진 String 메서드는 문자열을 반환합니다.
+참고로 반환되는 문자열이 처음에 전달한 문자열과 다를 수도 있습니다. 가령 `0:0:0:0:0:0:0:1` 형태의 문자열은 `::1`가 됩니다.
 
-A program to illustrate this is 
+다음은 예제 프로그램입니다.
 
 ```go
 /* IP
@@ -41,52 +41,53 @@ func main() {
 }
 ```
 
-If this is compiled to the executable `IP` then it can run for example as 
+이 프로그램이 `IP` 실행파일로 컴파일되면, 다음과 같이 실행할 수 있습니다.
 
     IP 127.0.0.1
-    
-with response
+
+결과는 다음과 같습니다.
 
     The address is 127.0.0.1
-    
-or as
+
+혹은 다음과 같이 실행하면
 
     IP 0:0:0:0:0:0:0:1
-    
-with response
+
+결과는 다음과 같습니다.
 
     The address is ::1
-    
-### The type IPmask
 
-In order to handle masking operations, there is the type
+
+### IPMask 타입
+
+마스킹 연산을 다루기 위한 IPMask라는 타입이 있습니다.
 
 ```go
 type IPMask []byte
 ```
 
-There is a function to create a mask from a 4-byte IPv4 address
+4 바이트 IPv4 주소로부터 마스크를 생성하는 함수가 있습니다.
 
 ```go
 func IPv4Mask(a, b, c, d byte) IPMask
 ```
 
-Alternatively, there is a method of `IP` which returns the default mask
+또는 디폴트 마스크를 반환하는 `IP` 타입의 메서드가 있습니다.
 
 ```go    
 func (ip IP) DefaultMask() IPMask
 ```
 
-Note that the string form of a mask is a hex number such as `ffff0000` for a mask of `255.255.0.0`.
+참고로 마스크의 형태는 16진수의 숫자이며, `255.255.0.0`의 마스크는 `ffff0000`입니다.
 
-A mask can then be used by a method of an IP address to find the network for that IP address
+그 다음 IP 타입의 메서드를 사용하면 IP 주소의 네트워크 주소를 찾을 수 있습니다.
 
 ```go
 func (ip IP) Mask(mask IPMask) IP
 ```
-    
-An example of the use of this is the following program: 
-    
+
+이를 사용한 예제 프로그램입니다.
+
 ```go
 /* Mask
  */
@@ -114,42 +115,40 @@ func main() {
 	mask := addr.DefaultMask()
 	network := addr.Mask(mask)
 	ones, bits := mask.Size()
-	fmt.Println("Address is ", addr.String(),
-		" Default mask length is ", bits,
-		"Leading ones count is ", ones,
-		"Mask is (hex) ", mask.String(),
-		" Network is ", network.String())
+	fmt.Println("Address is", addr.String(),
+		" Default mask length is", bits,
+		"Leading ones count is", ones,
+		"Mask is (hex)", mask.String(),
+		" Network is", network.String())
 	os.Exit(0)
 }
 ```
 
-If this is compiled to `Mask` and run by
+`Mask`로 컴파일되면, 다음을 실행할 수 있습니다.
 
     Mask 127.0.0.1
-    
-it will return
+결과값은 다음과 같습니다.
 
-    Address is  127.0.0.1  Default mask length is  8  Network is  127.0.0.0
-    
+    Address is 127.0.0.1  Default mask length is 32 Leading ones count is 8 Mask is (hex) ff000000  Network is 127.0.0.0
+​    
 
-### The type IPAddr
+### IPAddr 타입
 
-Many of the other functions and methods in the net package return a pointer to an `IPAddr`. 
-This is simply a structure containing an IP.
+net 패키지의 많은 함수와 메서드가 `IPAddr`에 대한 포인터를 반환합니다. 이는 IP를 가진 간단한 구조체입니다.
 
 ```go    
 type IPAddr {
     IP IP
 }
 ```
-  
-A primary use of this type is to perform DNS lookups on IP host names.
+
+이 타입의 주용도는 IP 호스트명에 대한 DNS 조회입니다.
 
 ```go
 func ResolveIPAddr(net, addr string) (*IPAddr, os.Error)
 ```
-    
-where `net` is one of `"ip"`, `"ip4"` or `"ip6"`. This is shown in the program 
+
+`net`은 `"ip"`, `"ip4"` 또는 `"ip6"`중 하나입니다. 다음은 예제 프로그램입니다.
 
 ```go
 
@@ -182,27 +181,27 @@ func main() {
 }
 ```
 
-Running `ResolveIP www.google.com` returns
+`ResolveIP www.google.com`을 실행하면 다음과 같은 결과값이 출력됩니다.
 
     Resolved address is  66.102.11.104
-    
+​    
 
-### Host lookup
+### 호스트 조회
 
-The function `ResolveIPAddr` will perform a DNS lookup on a hostname, and return a single IP address. 
-However, hosts may have multiple IP addresses, usually from multiple network interface cards. They may also have multiple host names, acting as aliases.
+`ResolveIPAddr` 함수는 호스트명으로 DNS를 조회하고 IP 주소를 반환합니다.
+그러나 호스트는 일반적으로 여러개의 네트워크 인터페이스 카드에서 복수의 IP를 가질 수 있습니다. 또한 별칭으로 동작하는 여러개의 호스트명을 가질 수도 있습니다.
 
 ```go
 func LookupHost(name string) (addrs []string, err os.Error)
 ```
-    
-One of these addresses will be labelled as the "canonical" host name. If you wish to find the canonical name, use 
+
+이 주소들중 하나는 "표준 (canonical)" 호스트명으로 라벨링됩니다. 표준 호스트명을 찾기 위해선 다음 함수를 사용할 수 있습니다.
 
 ```go
 func LookupCNAME(name string) (cname string, err os.Error)
 ```
 
-This is shown in the following program     
+다음은 예제 프로그램입니다.
 
 ```go
 /* LookupHost
@@ -235,5 +234,5 @@ func main() {
 	os.Exit(0)
 }
 ```
-    
-Note that this function returns strings, not `IPAddress` values.
+
+참고로 이 함수는 `IPAddress`가 아닌 문자열 리스트를 반환합니다.

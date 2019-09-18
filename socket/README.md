@@ -1,20 +1,19 @@
-# Chapter 3 Socket-level Programming
+# 챕터 3. 소켓 프로그래밍
 
-This chapter looks at the basic techniques for network programming. It deals with host and service addressing, and then considers TCP and UDP. 
-It shows how to build both servers and clients using the TCP and UDP Go APIs. It also looks at raw sockets, in case you need to implement your own protocol above IP. 
+이 챕터에서는 네트워크 프로그래밍의 기초 기술을 살펴볼 것입니다. 호스트 및 서비스 주소 지정 (addressing) 을 다룬 뒤 TCP와 UDP를 살펴보겠습니다.
+TCP와 UDP Go API를 사용하여 서버와 클라이언트를 구축하는 방법을 소개합니다. 또한 IP 프로토콜 위에서 자체 프로토콜을 구현해야하는 경우를 위해 원시 소켓에 대해서도 살펴보겠습니다.
 
-## Introduction
+## 소개
 
-There are many kinds of networks in the world. 
-These range from the very old such as serial links, through to wide area networks made from copper and fibre, to wireless networks of various kinds, both for computers and for telecommunications devices such as phones. 
-These networks obviously differ at the physical link layer, but in many cases they also differed at higher layers of the OSI stack.
+세상에는 여러 종류의 네트워크가 존재합니다.
+이들은 시리얼 링크와 같은 아주 오래된 것부터 구리 및 광섬유로 만든 광역 네트워크, 컴퓨터 및 전화와 같은 통신 장치를 위한 다양한 종류의 무선 네트워크에 이르기까지 다양합니다.
+이러한 네트워크는 물리적 링크 계층에선 분명히 다르지만 많은 경우 OSI 스택의 상위 레이어에서도 서로 다를 수 있습니다.
 
-Over the years there has been a convergence to the "internet stack" of IP and TCP/UDP. 
-For example, Bluetooth defines physical layers and protocol layers, but on top of that is an IP stack so that the same internet programming techniques can be employed on many Bluetooth devices. 
-Similarly, developing 4G wireless phone technologies such as LTE (Long Term Evolution) will also use an IP stack.
+수년의 시간이 지나면서 IP 와 TCP/UDP의 "인터넷 스택"으로 수렴 했습니다.
+예를 들어, 블루투스는 물리 계층과 프로토콜 계층을 정의하지만 그 위에 IP 스택이 있어 동일한 인터넷 프로그래밍 기술을 많은 블루투스 기기에서 사용할 수 있습니다.
+마찬가지로, LTE (Long Term Evolution)와 같은 4G 무선 전화 기술을 개발할 때에도 IP 스택을 사용합니다. 
 
-While IP provides the networking layer 3 of the OSI stack, TCP and UDP deal with layer 4. 
-These are not the final word, even in the internet world: SCTP has come from the telecommunications to challenge both TCP and UDP, while to provide internet services in interplanetary space requires new, under development protocols such as DTN. 
-Nevertheless, IP, TCP and UDP hold sway as principal networking technologies now and at least for a considerable time into the future. Go has full support for this style of programming
+IP는 OSI 스택의 3번째 계층인 네트워크 계층을 제공하지만 TCP와 UDP는 4번째 계층을 처리합니다. 이게 끝은 아닙니다. 전기 통신쪽에서 나온 SCTP는 TCP와 UDP에 대항하며, 행성간 공간에서 인터넷 서비스를 제공하기 위해 DTN과 같은 현재 개발 단계에 있는 새로운 프로토콜을 필요로 합니다.
+그럼에도 불구하고 IP, TCP 및 UDP는 주요 네트워킹 기술로써 현재 그리고 적어도 앞으로 상당한 기간동안은 그 자리를 유지할 것입니다. Go는 이러한 프로그래밍 스타일을 완벽하게 지원합니다.
 
-This chapter shows how to do TCP and UDP programming using Go, and how to use a raw socket for other protocols. 
+이 챕터에서는 Go를 활용한 TCP 및 UDP 프로그래밍과 타 프로토콜을 위한 원시 소켓의 사용 방법을 소개합니다.
